@@ -85,16 +85,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="OptionsScreen.cpp" />
     <ClCompile Include="Print.cpp" />
     <ClCompile Include="SDLWindow.cpp" />
     <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="SimulationScreen.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Colour.h" />
+    <ClInclude Include="Control.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Label.h" />
+    <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="OptionsScreen.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Print.h" />
     <ClInclude Include="Rect.h" />
@@ -103,6 +115,7 @@
     <ClInclude Include="SDLWindow.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Simulation.h" />
+    <ClInclude Include="SimulationScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

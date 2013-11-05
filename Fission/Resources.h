@@ -7,15 +7,11 @@ namespace Resources
 {
 	namespace Sprites
 	{
-
+		const std::string Particle="Resources\\Sprites\\Particle.png";
 	};
 	namespace Fonts
 	{
 		const std::string Arial="Resources\\Fonts\\Arial.ttf";
-	};
-	namespace Audio
-	{
-
 	};
 };
 

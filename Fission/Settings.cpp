@@ -29,23 +29,23 @@ bool Settings::Load()
 		if(Line.size()>0)
 		{
 			std::vector<std::string> Parts=Split(Line, ": ");
-			if(Parts.size()==2)
+			if(Parts.size()==4)
 			{
-				if(Parts[0]=="Volume")
+				if(Parts[0]=="SelectedColour")
 				{
 					SettingsLoaded++;
-					Volume=atoi(Parts[1].c_str());
+					SelectedColour.a=255;
+					SelectedColour.r=atoi(Parts[1].c_str());
+					SelectedColour.g=atoi(Parts[2].c_str());
 				}
-			}
-			else if(Parts.size()==4)
-			{
-				if(Parts[0]=="Colour")
+				else if(Parts[0]=="UnselectedColour")
 				{
 					SettingsLoaded++;
-					GameColour.a=255;
-					GameColour.r=atoi(Parts[1].c_str());
-					GameColour.g=atoi(Parts[2].c_str());
-					GameColour.b=atoi(Parts[3].c_str());
+					UnselectedColour.a=255;
+					UnselectedColour.r=atoi(Parts[1].c_str());
+					UnselectedColour.g=atoi(Parts[2].c_str());
+					UnselectedColour.b=atoi(Parts[3].c_str());
+					UnselectedColour.b=atoi(Parts[3].c_str());
 				}
 			}
 		}
@@ -74,8 +74,8 @@ bool Settings::Save()
 		return false;
 	}
 
-	Out<<"Volume: "<<Volume<<std::endl;
-	Out<<"Colour: "<<(int)GameColour.r<<" "<<(int)GameColour.g<<" "<<(int)GameColour.b;
+	Out<<"SelectedColour: "<<(int)SelectedColour.r<<" "<<(int)SelectedColour.g<<" "<<(int)SelectedColour.b;
+	Out<<"UnselectedColour: "<<(int)UnselectedColour.r<<" "<<(int)UnselectedColour.g<<" "<<(int)UnselectedColour.b;
 
 	Out.close();
 
@@ -122,7 +122,7 @@ std::vector<std::string> Settings::Split(const std::string &Input, const std::st
 const unsigned int Settings::WindowWidth=600;
 const unsigned int Settings::WindowHeight=600;
 
-Colour Settings::GameColour;
-unsigned int Settings::Volume;
+Colour Settings::SelectedColour;
+Colour Settings::UnselectedColour;
 
 std::string Settings::FilePath;

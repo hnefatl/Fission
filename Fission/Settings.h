@@ -14,9 +14,9 @@ public:
 
 	static bool Load();
 	static bool Save();
-
-	static Colour GameColour;
-	static unsigned int Volume;
+	
+	static Colour SelectedColour;
+	static Colour UnselectedColour;
 
 	const static unsigned int WindowWidth;
 	const static unsigned int WindowHeight;
