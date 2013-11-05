@@ -3,6 +3,8 @@
 Button::Button()
 {
 	Selected=false;
+	Clicked=false;
+	FramesToUpdate=15;
 }
 
 bool Button::HandleEvents(const SDL_Event &Event)
@@ -38,27 +40,27 @@ void Button::Update()
 	if(Selected)
 	{
 		// Transition to SelectedColour
-		if(CurrentColour.r<Settings::SelectedColour.r)
+		if(CurrentColour.r!=Settings::SelectedColour.r)
 		{
-			int New=CurrentColour.r+(Settings::SelectedColour.r-Settings::UnselectedColour.r)/FramesToUpdate;
+			int New=CurrentColour.r-(Settings::UnselectedColour.r-Settings::SelectedColour.r)/FramesToUpdate;
 			if(New<0)
 				New=0;
 			else if(New>255)
 				New=255;
 			CurrentColour.r=New;
 		}
-		else if(CurrentColour.g<Settings::SelectedColour.g)
+		else if(CurrentColour.g!=Settings::SelectedColour.g)
 		{
-			int New=CurrentColour.g+(Settings::SelectedColour.g-Settings::UnselectedColour.g)/FramesToUpdate;
+			int New=CurrentColour.g-(Settings::UnselectedColour.g-Settings::SelectedColour.g)/FramesToUpdate;
 			if(New<0)
 				New=0;
 			else if(New>255)
 				New=255;
 			CurrentColour.g=New;
 		}
-		else if(CurrentColour.b<Settings::SelectedColour.b)
+		else if(CurrentColour.b!=Settings::SelectedColour.b)
 		{
-			int New=CurrentColour.b+(Settings::SelectedColour.b-Settings::UnselectedColour.b)/FramesToUpdate;
+			int New=CurrentColour.b-(Settings::UnselectedColour.b-Settings::SelectedColour.b)/FramesToUpdate;
 			if(New<0)
 				New=0;
 			else if(New>255)
@@ -69,7 +71,7 @@ void Button::Update()
 	else
 	{
 		// Transition to UnselectedColour
-		if(CurrentColour.r<Settings::SelectedColour.r)
+		if(CurrentColour.r!=Settings::UnselectedColour.r)
 		{
 			int New=CurrentColour.r+(Settings::UnselectedColour.r-Settings::SelectedColour.r)/FramesToUpdate;
 			if(New<0)
@@ -78,7 +80,7 @@ void Button::Update()
 				New=255;
 			CurrentColour.r=New;
 		}
-		else if(CurrentColour.g<Settings::SelectedColour.g)
+		else if(CurrentColour.g!=Settings::UnselectedColour.g)
 		{
 			int New=CurrentColour.g+(Settings::UnselectedColour.g-Settings::SelectedColour.g)/FramesToUpdate;
 			if(New<0)
@@ -87,7 +89,7 @@ void Button::Update()
 				New=255;
 			CurrentColour.g=New;
 		}
-		else if(CurrentColour.b<Settings::SelectedColour.b)
+		else if(CurrentColour.b!=Settings::UnselectedColour.b)
 		{
 			int New=CurrentColour.b+(Settings::UnselectedColour.b-Settings::SelectedColour.b)/FramesToUpdate;
 			if(New<0)

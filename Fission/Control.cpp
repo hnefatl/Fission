@@ -47,7 +47,8 @@ Rect Control::GetLocation() const
 }
 void Control::SetLocation(const Point &Location)
 {
-	Position=Location;
+	Position.x=Location.x;
+	Position.y=Location.y;
 }
 
 Colour Control::GetColour() const

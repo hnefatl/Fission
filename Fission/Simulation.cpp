@@ -22,6 +22,11 @@ bool Simulation::Load()
 void Simulation::Run()
 {
 	Screens.push(new MainMenuScreen());
+	if(!Screens.top()->Load(Window.GetRenderer()))
+	{
+		Print("Failed to load MenuScreen.");
+		return;
+	}
 
 	while(Update())
 	{
@@ -34,6 +39,9 @@ bool Simulation::Update()
 	SDL_Event Event;
 	if(SDL_PollEvent(&Event))
 	{
+		if(Event.type==SDL_QUIT)
+			return false;
+
 		ScreenResult Result=Screens.top()->HandleEvents(Event, &Screens);
 		if(Result==ScreenResult::Error)
 		{
@@ -42,7 +50,11 @@ bool Simulation::Update()
 		}
 		else if(Result==ScreenResult::NewScreen)
 		{
-			Screens.top()->Load(Window.GetRenderer());
+			if(!Screens.top()->Load(Window.GetRenderer()))
+			{
+				Print("Failed to load new screen.");
+				return false;
+			}
 		}
 		else if(Result==ScreenResult::RemoveScreen)
 		{
